@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Рассчитайте предварительную стоимость и срок разработки сайта. Прозрачная смета для менеджера digital-агентства.">
+  <meta name="theme-color" content="#7254db"><title>Смета — калькулятор сайта</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%237254db'/%3E%3Cpath d='M12 14h16M12 20h16M12 26h9' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css"><script type="module" src="app.js"></script>
+</head>
+<body>
+  <header><a class="brand" href="./" aria-label="Смета — на главную"><span class="brand-mark">≋</span>смета<span class="brand-dot">.</span></a><span class="header-note">ИНСТРУМЕНТ ДЛЯ DIGITAL-АГЕНТСТВА</span><span class="version">Калькулятор сайта <span>v1.0</span></span></header>
+  <main>
+    <div class="intro"><div class="eyebrow"><span></span> ОТ ИДЕИ К ОЦЕНКЕ</div><h1>Сколько стоит ваш сайт?</h1><p>Выберите параметры проекта — получите понятную оценку<br class="desktop"> бюджета и сроков за одну минуту.</p></div>
+    <div class="workspace">
+      <form id="calculator" novalidate>
+        <section class="panel"><div class="section-title"><span class="step">01</span><h2>Какой сайт создаём?</h2></div>
+          <fieldset class="site-types"><legend class="sr-only">Тип сайта</legend>
+            <label class="type-card"><input type="radio" name="type" value="landing" checked><span class="site-icon">▤</span><strong>Лендинг</strong><span>Одна цель. Одна страница.</span><i></i></label>
+            <label class="type-card"><input type="radio" name="type" value="corporate"><span class="site-icon">▦</span><strong>Корпоративный</strong><span>Бизнес во всех деталях.</span><i></i></label>
+            <label class="type-card"><input type="radio" name="type" value="shop"><span class="site-icon">▧</span><strong>Интернет-магазин</strong><span>Всё для онлайн-продаж.</span><i></i></label>
+          </fieldset>
+          <div class="pages-header"><div><label for="pages">Количество страниц</label><p id="pages-hint">Лендинг — одностраничный сайт.</p></div><div class="stepper"><button type="button" id="minus" aria-label="Уменьшить количество страниц">−</button><input id="pages" type="number" min="1" max="100" step="1" value="1" aria-describedby="pages-hint pages-error"><button type="button" id="plus" aria-label="Увеличить количество страниц">+</button></div></div>
+          <input id="page-range" type="range" min="1" max="100" value="1" aria-label="Количество страниц"><div class="range-labels"><span>1 страница</span><span>100 страниц</span></div><p id="pages-error" class="error" role="alert" hidden></p>
+        </section>
+        <section class="panel"><div class="section-title"><span class="step">02</span><h2>Что должен уметь сайт?</h2><span class="optional">Можно выбрать несколько</span></div>
+          <fieldset class="features"><legend class="sr-only">Дополнительные функции</legend>
+            <label class="feature"><input name="feature" type="checkbox" value="form"><span class="feature-icon">↗</span><span class="feature-copy"><strong>Форма заявки</strong><small>Обращения с сайта на почту</small></span><span class="feature-price">+ 5 000 ₽</span></label>
+            <label class="feature"><input name="feature" type="checkbox" value="catalog"><span class="feature-icon">▦</span><span class="feature-copy"><strong>Каталог</strong><small>Товары, категории и фильтры</small></span><span class="feature-price">+ 20 000 ₽</span></label>
+            <label class="feature"><input name="feature" type="checkbox" value="payment"><span class="feature-icon">▱</span><span class="feature-copy"><strong>Онлайн-оплата</strong><small>Подключение платёжного сервиса</small></span><span class="feature-price">+ 15 000 ₽</span></label>
+            <label class="feature"><input name="feature" type="checkbox" value="crm"><span class="feature-icon">⇄</span><span class="feature-copy"><strong>Интеграция с CRM</strong><small>Передача заявок в одну CRM</small></span><span class="feature-price">+ 12 000 ₽</span></label>
+            <label class="feature"><input name="feature" type="checkbox" value="language"><span class="feature-icon">文</span><span class="feature-copy"><strong>Мультиязычность</strong><small>Подключение второго языка</small></span><span class="feature-price">+ 15 000 ₽</span></label>
+          </fieldset>
+        </section>
+        <section class="panel"><div class="section-title"><span class="step">03</span><h2>Как скоро нужен результат?</h2></div><fieldset class="urgency"><legend class="sr-only">Срочность проекта</legend><label><input type="radio" name="urgency" value="standard" checked><span><strong>В обычном темпе</strong><small>Оптимальный график</small></span><b>Без наценки</b></label><label><input type="radio" name="urgency" value="express"><span><strong>Нужно быстрее <em>↗</em></strong><small>Срок на 30% короче</small></span><b>+ 30% к цене</b></label></fieldset></section>
+        <button id="reset" type="reset">↺ <span>Сбросить параметры</span></button>
+      </form>
+      <aside><section class="estimate"><div class="estimate-label"><span class="live-dot"></span> ВАША ПРЕДВАРИТЕЛЬНАЯ ОЦЕНКА</div><div id="result" aria-live="polite" aria-atomic="true"><div class="total" id="total">40 000 <span>₽</span></div><p class="total-caption">Ориентировочная стоимость проекта</p><div class="timeline"><span class="clock-icon">◷</span><div><strong id="days">7–9 рабочих дней</strong><small>Ориентировочный срок разработки</small></div></div></div><div class="breakdown"><h3>Из чего складывается цена</h3><div id="breakdown"></div><div class="included"><span>✓</span> Адаптивный дизайн и тестирование включены</div></div><button id="copy" type="button">Скопировать расчёт <span>↗</span></button><button id="print" type="button">Сохранить в PDF <span>↓</span></button><p class="estimate-note">Предварительная оценка. Точная стоимость и сроки определяются после обсуждения задач и технического задания.</p><div id="status" class="status" role="status"></div></section><div class="privacy"><span>◇</span><p>Без регистрации и звонков.<br>Ваш расчёт остаётся в вашем браузере.</p></div></aside>
+    </div>
+    <details class="method"><summary>Как устроен расчёт <span>+</span></summary><div><p>Демонстрационные тарифы для тестового задания, а не рыночная оферта. База: лендинг — 40 000 ₽ / 7 дней; корпоративный сайт — 70 000 ₽ / 12 дней; интернет-магазин — 100 000 ₽ / 18 дней. База включает первую страницу, адаптивный дизайн, разработку и тестирование. Для магазина каталог обязателен и добавляется отдельной строкой.</p><p>Каждая следующая страница: + 4 000 ₽ и + 1 рабочий день. Форма: + 1 день; каталог: + 4; оплата: + 3; CRM: + 2; второй язык: + 3. Срочность: + 30% к полной стоимости, срок × 0,7 с округлением вверх. Диапазон сроков: от расчётного срока до + 20%, с округлением вверх.</p><p>Сроки указаны в рабочих днях с момента получения контента и согласования задания. Страница — отдельный адрес с контентом; карточки товаров по одному шаблону отдельно не считаются. Перевод, наполнение каталога, домен, хостинг и комиссии сервисов в оценку не входят. При выборе второго языка предполагается готовый перевод от заказчика.</p></div></details>
+    <footer><span class="footer-brand">смета.</span><span>Чуть меньше догадок. Чуть больше ясности.</span><span>Сделано для digital-команд</span></footer>
+  </main>
+</body>
+</html>
